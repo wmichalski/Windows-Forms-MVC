@@ -141,5 +141,10 @@ namespace PAIN1
         {
             errorProvider1.SetError(dateTimePicker1, "");
         }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

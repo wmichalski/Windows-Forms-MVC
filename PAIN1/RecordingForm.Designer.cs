@@ -140,9 +140,10 @@
             // 
             this.userControl11.Location = new System.Drawing.Point(334, 1);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Picture_ = PAIN1.UserControl1.PictureType.Pop;
+            this.userControl11.Picture_ = PAIN1.UserControl1.PictureType.Rock;
             this.userControl11.Size = new System.Drawing.Size(156, 145);
             this.userControl11.TabIndex = 11;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // RecordingForm
             // 

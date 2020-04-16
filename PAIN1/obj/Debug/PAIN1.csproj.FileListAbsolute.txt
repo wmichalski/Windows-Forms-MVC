@@ -22,4 +22,4 @@ C:\Users\Wiktor M\Source\Repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.csproj.G
 C:\Users\Wiktor M\Source\Repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.csproj.CoreCompileInputs.cache
 C:\Users\Wiktor M\Source\Repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.exe
 C:\Users\Wiktor M\Source\Repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.pdb
-C:\Users\Wiktor M\Source\Repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.UserControl1.resources
+C:\Users\Wiktor M\source\repos\pain-windows-forms\PAIN1\obj\Debug\PAIN1.UserControlEditor.resources
