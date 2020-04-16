@@ -96,6 +96,7 @@ namespace PAIN1
                 }
 
                 UpdateAllWindows(recording);
+                updateCounter();
 
             }
         }
@@ -117,8 +118,15 @@ namespace PAIN1
                     {
                         if (item.Tag == recording)
                         {
-                            UpdateItem(item);
-                            break;
+                            if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "this century")
+                                form.recordingsListView.Items.Remove(item);
+                            else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "prev century")
+                                form.recordingsListView.Items.Remove(item);
+                            else
+                            {
+                                UpdateItem(item);
+                                break;
+                            }
                         }
                     }
                     if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
