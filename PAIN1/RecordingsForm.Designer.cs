@@ -59,6 +59,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.Visible = false;
             // 
             // toolStripButtonAdd
             // 
@@ -174,7 +175,8 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "RecordingsForm";
             this.Text = "Recordings";
-            this.Activated += new System.EventHandler(this.RecordingsForm_GotFocus);
+            this.Activated += new System.EventHandler(this.RecordingsForm_Activated);
+            this.Deactivate += new System.EventHandler(this.RecordingsForm_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecordingsForm_FormClosing);
             this.Load += new System.EventHandler(this.RecordingsForm_Load);
             this.toolStrip1.ResumeLayout(false);

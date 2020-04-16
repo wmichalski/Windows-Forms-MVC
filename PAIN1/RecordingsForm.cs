@@ -43,7 +43,8 @@ namespace PAIN1
         private void updateCounter()
         {
             MainForm main = (MainForm)this.ParentForm;
-            main.setCounter(this.recordingsListView.Items.Count.ToString());
+            if (main != null)
+                main.setCounter(this.recordingsListView.Items.Count.ToString());
         }
 
         private void RecordingsForm_GotFocus(object sender, EventArgs e)
@@ -56,7 +57,12 @@ namespace PAIN1
             ListViewItem item = new ListViewItem();
             item.Tag = recording;
             UpdateItem(item);
-            recordingsListView.Items.Add(item);
+            if (recording.ReleaseDate < new DateTime(1999, 12, 31) && filter == "this century")
+                {; }
+            else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && filter == "prev century")
+                {; }
+            else
+                recordingsListView.Items.Add(item);
             this.updateCounter();
         }
 
@@ -127,11 +133,11 @@ namespace PAIN1
             deleteElement();
         }
 
-       
+
         private void ToolStripButtonDelete_Click(object sender, EventArgs e)
         {
             deleteElement();
-         }
+        }
 
         private void deleteElement()
         {
@@ -142,80 +148,89 @@ namespace PAIN1
             }
         }
 
-            private void UpdateAllWindows(Recording recording)
+        private void UpdateAllWindows(Recording recording)
+        {
+            foreach (RecordingsForm form in this.ParentForm.MdiChildren)
             {
-               foreach (RecordingsForm form in this.ParentForm.MdiChildren)
+                bool found = false;
+                foreach (ListViewItem item in form.recordingsListView.Items)
                 {
-                    bool found = false;
-                    foreach (ListViewItem item in form.recordingsListView.Items)
+                    if (item.Tag == recording)
                     {
-                        if (item.Tag == recording)
+                        found = true;
+                        if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "this century")
+                            form.recordingsListView.Items.Remove(item);
+                        else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "prev century")
+                            form.recordingsListView.Items.Remove(item);
+                        else
                         {
-                            found = true;
-                            if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "this century")
-                                form.recordingsListView.Items.Remove(item);
-                            else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "prev century")
-                                form.recordingsListView.Items.Remove(item);
-                            else
-                            {
-                                UpdateItem(item);
-                                break;
-                            }
-                        }
-                    }
-                    if (!found)
-                    {
-                        if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
-                        {
-                            ListViewItem item = new ListViewItem();
-                            item.Tag = recording;
                             UpdateItem(item);
-                            form.recordingsListView.Items.Add(item);
-                        }
-                        if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
-                        {
-                            ListViewItem item = new ListViewItem();
-                            item.Tag = recording;
-                            UpdateItem(item);
-                            form.recordingsListView.Items.Add(item);
+                            break;
                         }
                     }
                 }
-            }
-
-
-            private void UpdateItem(ListViewItem item)
-            {
-                Recording recording = (Recording)item.Tag;
-                while (item.SubItems.Count < 4)
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem());
-                item.SubItems[0].Text = recording.Name;
-                item.SubItems[1].Text = recording.Artist;
-                item.SubItems[2].Text = recording.ReleaseDate.ToShortDateString();
-                item.SubItems[3].Text = recording.Genre;
-            }
-
-            private void UpdateItems(string filter = null)
-            {
-                recordingsListView.Items.Clear();
-                foreach (Recording recording in Document.recordings)
+                if (!found)
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.Tag = recording;
-                    UpdateItem(item);
-                    if (recording.ReleaseDate < new DateTime(1999, 12, 31) && filter == "this century")
-                    {; }
-                    else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && filter == "prev century")
-                    {; }
-                    else
+                    if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
                     {
-                        recordingsListView.Items.Add(item);
+                        ListViewItem item = new ListViewItem();
+                        item.Tag = recording;
+                        UpdateItem(item);
+                        form.recordingsListView.Items.Add(item);
+                    }
+                    if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Tag = recording;
+                        UpdateItem(item);
+                        form.recordingsListView.Items.Add(item);
                     }
                 }
-                this.updateCounter();
             }
+        }
 
 
+        private void UpdateItem(ListViewItem item)
+        {
+            Recording recording = (Recording)item.Tag;
+            while (item.SubItems.Count < 4)
+                item.SubItems.Add(new ListViewItem.ListViewSubItem());
+            item.SubItems[0].Text = recording.Name;
+            item.SubItems[1].Text = recording.Artist;
+            item.SubItems[2].Text = recording.ReleaseDate.ToShortDateString();
+            item.SubItems[3].Text = recording.Genre;
+        }
+
+        private void UpdateItems(string filter = null)
+        {
+            recordingsListView.Items.Clear();
+            foreach (Recording recording in Document.recordings)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Tag = recording;
+                UpdateItem(item);
+                if (recording.ReleaseDate < new DateTime(1999, 12, 31) && filter == "this century")
+                {; }
+                else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && filter == "prev century")
+                {; }
+                else
+                {
+                    recordingsListView.Items.Add(item);
+                }
+            }
+            this.updateCounter();
+        }
+
+        private void RecordingsForm_Activated(object sender, EventArgs e)
+        {
+            ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
+        }
+
+        private void RecordingsForm_Deactivate(object sender, EventArgs e)
+        {
+            ToolStripManager.RevertMerge(((MainForm)MdiParent).toolStrip1, toolStrip1);
+        }
+
     }
-    }
+}
 

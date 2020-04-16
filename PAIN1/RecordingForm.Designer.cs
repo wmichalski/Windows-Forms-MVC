@@ -236,7 +236,7 @@
             this.userControl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userControl11.Location = new System.Drawing.Point(0, 0);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Picture_ = PAIN1.UserControl1.PictureType.Rock;
+            this.userControl11.Picture_ = PAIN1.UserControl1.PictureType.Rap;
             this.userControl11.Size = new System.Drawing.Size(172, 210);
             this.userControl11.TabIndex = 11;
             // 

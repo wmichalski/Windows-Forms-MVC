@@ -34,7 +34,7 @@ namespace PAIN1
 
         public string RecordingGenre
         {
-            get 
+            get
             {
                 if (userControl11.Picture_ == UserControl1.PictureType.Rock)
                     return "rock";
@@ -87,7 +87,7 @@ namespace PAIN1
             {
                 if (string.IsNullOrWhiteSpace(textBoxName.Text))
                 {
-                    throw new Exception ("Name of the recording is missing.");
+                    throw new Exception("Name of the recording is missing.");
                 }
             }
             catch (Exception exception)

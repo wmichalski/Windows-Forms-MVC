@@ -130,7 +130,7 @@ namespace PAIN1
         #endregion
 
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        public System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;

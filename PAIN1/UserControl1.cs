@@ -52,11 +52,11 @@ namespace PAIN1
         public PictureType Picture_
         {
             get
-            { 
-                return state; 
+            {
+                return state;
             }
             set
-            { 
+            {
                 state = value; setImage(state);
             }
 
