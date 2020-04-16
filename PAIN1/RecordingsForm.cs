@@ -7,6 +7,9 @@ namespace PAIN1
     {
 
         private Document Document { get; set; }
+
+        string filter = null;
+
         public RecordingsForm(Document document)
         {
             InitializeComponent();
@@ -25,7 +28,8 @@ namespace PAIN1
         {
             string selectedText = DropdownFilters.Text;
 
-            UpdateItems(selectedText);
+            filter = selectedText;
+            UpdateItems(filter);
         }
 
         private void RecordingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -91,7 +95,7 @@ namespace PAIN1
                     recording.Genre = recordingForm.RecordingGenre;
                 }
 
-                UpdateAllWindows();
+                UpdateAllWindows(recording);
 
             }
         }
@@ -105,16 +109,31 @@ namespace PAIN1
                 }
             }
 
-            private void UpdateAllWindows()
+            private void UpdateAllWindows(Recording recording)
             {
                foreach (RecordingsForm form in this.ParentForm.MdiChildren)
                 {
-                    int selectedItem = form.recordingsListView.FocusedItem.Index;
-                    form.UpdateItems();
-                    if (selectedItem < form.recordingsListView.Items.Count)
+                    foreach (ListViewItem item in form.recordingsListView.Items)
                     {
-                        form.recordingsListView.Items[selectedItem].Focused = true;
-                        form.recordingsListView.Items[selectedItem].Selected = true;
+                        if (item.Tag == recording)
+                        {
+                            UpdateItem(item);
+                            break;
+                        }
+                    }
+                    if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Tag = recording;
+                        UpdateItem(item);
+                        form.recordingsListView.Items.Add(item);
+                    }
+                    if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Tag = recording;
+                        UpdateItem(item);
+                        form.recordingsListView.Items.Add(item);
                     }
                 }
             }
