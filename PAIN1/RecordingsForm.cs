@@ -30,6 +30,7 @@ namespace PAIN1
 
             filter = selectedText;
             UpdateItems(filter);
+            updateCounter();
         }
 
         private void RecordingsForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,7 +58,7 @@ namespace PAIN1
             ListViewItem item = new ListViewItem();
             item.Tag = recording;
             UpdateItem(item);
-            if (recording.ReleaseDate < new DateTime(1999, 12, 31) && filter == "this century")
+            if (recording.ReleaseDate <= new DateTime(1999, 12, 31) && filter == "this century")
                 {; }
             else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && filter == "prev century")
                 {; }
@@ -158,7 +159,7 @@ namespace PAIN1
                     if (item.Tag == recording)
                     {
                         found = true;
-                        if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "this century")
+                        if (recording.ReleaseDate <= new DateTime(1999, 12, 31) && form.filter == "this century")
                             form.recordingsListView.Items.Remove(item);
                         else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "prev century")
                             form.recordingsListView.Items.Remove(item);
@@ -178,7 +179,7 @@ namespace PAIN1
                         UpdateItem(item);
                         form.recordingsListView.Items.Add(item);
                     }
-                    if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
+                    if (recording.ReleaseDate <= new DateTime(1999, 12, 31) && form.filter == "prev century")
                     {
                         ListViewItem item = new ListViewItem();
                         item.Tag = recording;
@@ -209,7 +210,7 @@ namespace PAIN1
                 ListViewItem item = new ListViewItem();
                 item.Tag = recording;
                 UpdateItem(item);
-                if (recording.ReleaseDate < new DateTime(1999, 12, 31) && filter == "this century")
+                if (recording.ReleaseDate <= new DateTime(1999, 12, 31) && filter == "this century")
                 {; }
                 else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && filter == "prev century")
                 {; }
@@ -218,7 +219,6 @@ namespace PAIN1
                     recordingsListView.Items.Add(item);
                 }
             }
-            this.updateCounter();
         }
 
         private void RecordingsForm_Activated(object sender, EventArgs e)
