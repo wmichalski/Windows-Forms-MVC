@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
+            this.DropdownFilters = new System.Windows.Forms.ToolStripComboBox();
             this.recordingsListView = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderArtist = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderRelease = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.DropdownFilters = new System.Windows.Forms.ToolStripComboBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.dropdownAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.dropdownDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -81,6 +87,17 @@
             this.toolStripButtonEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonEdit.Click += new System.EventHandler(this.ToolStripButtonEdit_Click);
             // 
+            // DropdownFilters
+            // 
+            this.DropdownFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DropdownFilters.Items.AddRange(new object[] {
+            "all",
+            "this century",
+            "prev century"});
+            this.DropdownFilters.Name = "DropdownFilters";
+            this.DropdownFilters.Size = new System.Drawing.Size(121, 25);
+            this.DropdownFilters.DropDownClosed += new System.EventHandler(this.DropdownFilters_DropDownClosed);
+            // 
             // recordingsListView
             // 
             this.recordingsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -88,6 +105,7 @@
             this.columnHeaderArtist,
             this.columnHeaderRelease,
             this.columnHeaderGenre});
+            this.recordingsListView.ContextMenuStrip = this.contextMenuStrip1;
             this.recordingsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordingsListView.HideSelection = false;
             this.recordingsListView.Location = new System.Drawing.Point(0, 25);
@@ -117,16 +135,35 @@
             this.columnHeaderGenre.Text = "Genre";
             this.columnHeaderGenre.Width = 120;
             // 
-            // DropdownFilters
+            // contextMenuStrip1
             // 
-            this.DropdownFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DropdownFilters.Items.AddRange(new object[] {
-            "all",
-            "this century",
-            "prev century"});
-            this.DropdownFilters.Name = "DropdownFilters";
-            this.DropdownFilters.Size = new System.Drawing.Size(121, 25);
-            this.DropdownFilters.DropDownClosed += new System.EventHandler(this.DropdownFilters_DropDownClosed);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dropdownAdd,
+            this.dropdownEdit,
+            this.dropdownDelete});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 70);
+            // 
+            // dropdownAdd
+            // 
+            this.dropdownAdd.Name = "dropdownAdd";
+            this.dropdownAdd.Size = new System.Drawing.Size(107, 22);
+            this.dropdownAdd.Text = "Add";
+            this.dropdownAdd.Click += new System.EventHandler(this.dropdownAdd_Click);
+            // 
+            // dropdownEdit
+            // 
+            this.dropdownEdit.Name = "dropdownEdit";
+            this.dropdownEdit.Size = new System.Drawing.Size(107, 22);
+            this.dropdownEdit.Text = "Edit";
+            this.dropdownEdit.Click += new System.EventHandler(this.dropdownEdit_Click);
+            // 
+            // dropdownDelete
+            // 
+            this.dropdownDelete.Name = "dropdownDelete";
+            this.dropdownDelete.Size = new System.Drawing.Size(107, 22);
+            this.dropdownDelete.Text = "Delete";
+            this.dropdownDelete.Click += new System.EventHandler(this.dropdownDelete_Click);
             // 
             // RecordingsForm
             // 
@@ -137,11 +174,12 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "RecordingsForm";
             this.Text = "Recordings";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecordingsForm_FormClosing);
             this.Activated += new System.EventHandler(this.RecordingsForm_GotFocus);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecordingsForm_FormClosing);
             this.Load += new System.EventHandler(this.RecordingsForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,6 +197,10 @@
         private System.Windows.Forms.ColumnHeader columnHeaderRelease;
         private System.Windows.Forms.ColumnHeader columnHeaderGenre;
         private System.Windows.Forms.ToolStripComboBox DropdownFilters;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem dropdownAdd;
+        private System.Windows.Forms.ToolStripMenuItem dropdownEdit;
+        private System.Windows.Forms.ToolStripMenuItem dropdownDelete;
     }
 }
 

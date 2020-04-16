@@ -72,6 +72,16 @@ namespace PAIN1
 
         private void ToolStripButtonAdd_Click(object sender, EventArgs e)
         {
+            addNewElement();
+        }
+
+        private void dropdownAdd_Click(object sender, EventArgs e)
+        {
+            addNewElement();
+        }
+
+        private void addNewElement()
+        {
             RecordingForm recordingForm = new RecordingForm(null, Document.recordings);
             if (recordingForm.ShowDialog() == DialogResult.OK)
             {
@@ -81,7 +91,18 @@ namespace PAIN1
 
             }
         }
+
         private void ToolStripButtonEdit_Click(object sender, EventArgs e)
+        {
+            editElement();
+        }
+
+        private void dropdownEdit_Click(object sender, EventArgs e)
+        {
+            editElement();
+        }
+
+        private void editElement()
         {
             if (recordingsListView.SelectedItems.Count == 1)
             {
@@ -100,24 +121,37 @@ namespace PAIN1
 
             }
         }
+
+        private void dropdownDelete_Click(object sender, EventArgs e)
+        {
+            deleteElement();
+        }
+
        
-            private void ToolStripButtonDelete_Click(object sender, EventArgs e)
+        private void ToolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+            deleteElement();
+         }
+
+        private void deleteElement()
+        {
+            if (recordingsListView.SelectedItems.Count == 1)
             {
-                if (recordingsListView.SelectedItems.Count == 1)
-                {
-                    Recording recording = (Recording)recordingsListView.SelectedItems[0].Tag;
-                    Document.DeleteRecording(recording);
-                }
+                Recording recording = (Recording)recordingsListView.SelectedItems[0].Tag;
+                Document.DeleteRecording(recording);
             }
+        }
 
             private void UpdateAllWindows(Recording recording)
             {
                foreach (RecordingsForm form in this.ParentForm.MdiChildren)
                 {
+                    bool found = false;
                     foreach (ListViewItem item in form.recordingsListView.Items)
                     {
                         if (item.Tag == recording)
                         {
+                            found = true;
                             if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "this century")
                                 form.recordingsListView.Items.Remove(item);
                             else if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "prev century")
@@ -129,19 +163,22 @@ namespace PAIN1
                             }
                         }
                     }
-                    if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
+                    if (!found)
                     {
-                        ListViewItem item = new ListViewItem();
-                        item.Tag = recording;
-                        UpdateItem(item);
-                        form.recordingsListView.Items.Add(item);
-                    }
-                    if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
-                    {
-                        ListViewItem item = new ListViewItem();
-                        item.Tag = recording;
-                        UpdateItem(item);
-                        form.recordingsListView.Items.Add(item);
+                        if (recording.ReleaseDate > new DateTime(1999, 12, 31) && form.filter == "this century")
+                        {
+                            ListViewItem item = new ListViewItem();
+                            item.Tag = recording;
+                            UpdateItem(item);
+                            form.recordingsListView.Items.Add(item);
+                        }
+                        if (recording.ReleaseDate < new DateTime(1999, 12, 31) && form.filter == "prev century")
+                        {
+                            ListViewItem item = new ListViewItem();
+                            item.Tag = recording;
+                            UpdateItem(item);
+                            form.recordingsListView.Items.Add(item);
+                        }
                     }
                 }
             }
@@ -177,6 +214,8 @@ namespace PAIN1
                 }
                 this.updateCounter();
             }
-        }
+
+
+    }
     }
 
