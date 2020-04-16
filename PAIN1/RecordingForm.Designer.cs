@@ -72,7 +72,7 @@
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dateTimePicker1.Location = new System.Drawing.Point(79, 63);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(289, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(269, 20);
             this.dateTimePicker1.TabIndex = 6;
             this.dateTimePicker1.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker1_Validating);
             this.dateTimePicker1.Validated += new System.EventHandler(this.dateTimePicker1_Validated);
@@ -82,7 +82,7 @@
             this.textBoxArtist.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxArtist.Location = new System.Drawing.Point(79, 33);
             this.textBoxArtist.Name = "textBoxArtist";
-            this.textBoxArtist.Size = new System.Drawing.Size(289, 20);
+            this.textBoxArtist.Size = new System.Drawing.Size(269, 20);
             this.textBoxArtist.TabIndex = 5;
             this.textBoxArtist.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxArtist_Validating);
             this.textBoxArtist.Validated += new System.EventHandler(this.textBoxArtist_Validated);
@@ -92,7 +92,7 @@
             this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxName.Location = new System.Drawing.Point(79, 3);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(289, 20);
+            this.textBoxName.Size = new System.Drawing.Size(269, 20);
             this.textBoxName.TabIndex = 4;
             this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating);
             this.textBoxName.Validated += new System.EventHandler(this.textBoxName_Validated);
@@ -127,9 +127,10 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 1, 2);
@@ -165,7 +166,7 @@
             this.textBoxGenre.Location = new System.Drawing.Point(79, 93);
             this.textBoxGenre.Name = "textBoxGenre";
             this.textBoxGenre.ReadOnly = true;
-            this.textBoxGenre.Size = new System.Drawing.Size(289, 20);
+            this.textBoxGenre.Size = new System.Drawing.Size(269, 20);
             this.textBoxGenre.TabIndex = 8;
             // 
             // errorProvider1
