@@ -65,10 +65,12 @@ namespace PAIN1
                 textBoxArtist.Text = recording.Artist;
                 dateTimePicker1.Value = recording.ReleaseDate;
                 userControl11.Picture_ = userControl11.getEnumFromString(recording.Genre);
+                textBoxGenre.Text = recording.Genre;
             }
             else
             {
                 dateTimePicker1.Value = new DateTime(1980, 1, 1);
+                setGenre();
             }
         }
 
@@ -142,14 +144,9 @@ namespace PAIN1
             errorProvider1.SetError(dateTimePicker1, "");
         }
 
-        private void userControl11_Load(object sender, EventArgs e)
+        public void setGenre()
         {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            textBoxGenre.Text = RecordingGenre;
         }
     }
 }

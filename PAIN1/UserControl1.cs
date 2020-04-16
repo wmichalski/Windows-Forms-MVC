@@ -74,6 +74,8 @@ namespace PAIN1
             int next = ((int)state + 1) % 3;
             state = (PictureType)next;
             setImage(state);
+            RecordingForm form = (RecordingForm)this.ParentForm;
+            form.setGenre();
         }
 
         public void setImage(PictureType state)
