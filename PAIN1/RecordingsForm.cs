@@ -224,6 +224,7 @@ namespace PAIN1
         private void RecordingsForm_Activated(object sender, EventArgs e)
         {
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
+            updateCounter();
         }
 
         private void RecordingsForm_Deactivate(object sender, EventArgs e)
