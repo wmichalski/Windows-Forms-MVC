@@ -152,8 +152,8 @@ namespace PAIN1
                 Recording recording = (Recording)item.Tag;
                 while (item.SubItems.Count < 4)
                     item.SubItems.Add(new ListViewItem.ListViewSubItem());
-                item.SubItems[0].Text = recording.Artist;
-                item.SubItems[1].Text = recording.Name;
+                item.SubItems[0].Text = recording.Name;
+                item.SubItems[1].Text = recording.Artist;
                 item.SubItems[2].Text = recording.ReleaseDate.ToShortDateString();
                 item.SubItems[3].Text = recording.Genre;
             }
