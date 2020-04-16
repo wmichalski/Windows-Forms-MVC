@@ -20,6 +20,11 @@ namespace PAIN1
             IsMdiContainer = true;
         }
 
+        public void setCounter(string text)
+        {
+            this.toolStripStatusCount.Text = text;
+        }
+
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RecordingsForm recordingsForm = new RecordingsForm(document);

@@ -96,7 +96,6 @@
             this.recordingsListView.TabIndex = 5;
             this.recordingsListView.UseCompatibleStateImageBehavior = false;
             this.recordingsListView.View = System.Windows.Forms.View.Details;
-            this.recordingsListView.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // columnHeaderName
             // 
@@ -139,6 +138,7 @@
             this.Name = "RecordingsForm";
             this.Text = "Recordings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecordingsForm_FormClosing);
+            this.Activated += new System.EventHandler(this.RecordingsForm_GotFocus);
             this.Load += new System.EventHandler(this.RecordingsForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
