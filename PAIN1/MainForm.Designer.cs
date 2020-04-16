@@ -58,6 +58,7 @@ namespace PAIN1
             this.menuStrip1.Size = new System.Drawing.Size(552, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // windowsToolStripMenuItem
             // 
@@ -98,7 +99,7 @@ namespace PAIN1
             // toolStripStatusCount
             // 
             this.toolStripStatusCount.Name = "toolStripStatusCount";
-            this.toolStripStatusCount.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusCount.Size = new System.Drawing.Size(13, 17);
             this.toolStripStatusCount.Text = "0";
             // 
             // MainForm
