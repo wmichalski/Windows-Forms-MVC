@@ -15,6 +15,8 @@ namespace PAIN1
         private Recording recording;
         private List<Recording> recordings;
 
+        private List<string> genres = new List<string>() { "rap", "pop", "rock" };
+
         public string RecordingName
         {
             get { return textBoxName.Text; }
@@ -32,12 +34,25 @@ namespace PAIN1
 
         public string RecordingGenre
         {
-            get { return "rap"; }
+            get 
+            {
+                if (userControl11.Picture_ == UserControl1.PictureType.Rock)
+                    return "rock";
+                else if (userControl11.Picture_ == UserControl1.PictureType.Rap)
+                    return "rap";
+                else if (userControl11.Picture_ == UserControl1.PictureType.Pop)
+                    return "pop";
+                return null;
+            }
         }
 
         public RecordingForm(Recording recording, List<Recording> recordings)
         {
             InitializeComponent();
+            if (recording == null)
+                userControl11.setImage(userControl11.Picture_);
+            else
+                userControl11.setImage(userControl11.getEnumFromString(recording.Genre));
             this.recording = recording;
             this.recordings = recordings;
         }
@@ -49,7 +64,7 @@ namespace PAIN1
                 textBoxName.Text = recording.Name;
                 textBoxArtist.Text = recording.Artist;
                 dateTimePicker1.Value = recording.ReleaseDate;
-
+                userControl11.Picture_ = userControl11.getEnumFromString(recording.Genre);
             }
             else
             {
