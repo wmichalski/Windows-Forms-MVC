@@ -125,7 +125,7 @@ namespace PAIN1
             catch (Exception exception)
             {
                 e.Cancel = true;
-                errorProvider1.SetError(textBoxArtist, exception.Message);
+                errorProvider1.SetError(dateTimePicker1, exception.Message);
             }
         }
 
