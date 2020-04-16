@@ -64,6 +64,67 @@ namespace PAIN1
                 DialogResult = DialogResult.OK;
         }
 
-     
+        private void textBoxName_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBoxName.Text))
+                {
+                    throw new Exception ("Name of the recording is missing.");
+                }
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(textBoxName, exception.Message);
+            }
+        }
+
+        private void textBoxArtist_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBoxArtist.Text))
+                {
+                    throw new Exception("Artist of the recording is missing.");
+                }
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(textBoxArtist, exception.Message);
+            }
+        }
+
+        private void dateTimePicker1_Validating(object sender, CancelEventArgs e)
+        {
+            try
+            {
+                if (dateTimePicker1.Value > DateTime.Now.Date)
+                {
+                    throw new Exception("Wrong date.");
+                }
+            }
+            catch (Exception exception)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(textBoxArtist, exception.Message);
+            }
+        }
+
+        private void textBoxName_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(textBoxName, "");
+        }
+
+        private void textBoxArtist_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(textBoxArtist, "");
+        }
+
+        private void dateTimePicker1_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(dateTimePicker1, "");
+        }
     }
 }

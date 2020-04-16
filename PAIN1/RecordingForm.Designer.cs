@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.buttonGenre = new System.Windows.Forms.Button();
@@ -41,8 +42,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -80,6 +83,8 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 6;
+            this.dateTimePicker1.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker1_Validating);
+            this.dateTimePicker1.Validated += new System.EventHandler(this.dateTimePicker1_Validated);
             // 
             // textBoxArtist
             // 
@@ -87,6 +92,8 @@
             this.textBoxArtist.Name = "textBoxArtist";
             this.textBoxArtist.Size = new System.Drawing.Size(200, 20);
             this.textBoxArtist.TabIndex = 5;
+            this.textBoxArtist.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxArtist_Validating);
+            this.textBoxArtist.Validated += new System.EventHandler(this.textBoxArtist_Validated);
             // 
             // textBoxName
             // 
@@ -94,6 +101,8 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(200, 20);
             this.textBoxName.TabIndex = 4;
+            this.textBoxName.Validating += new System.ComponentModel.CancelEventHandler(this.textBoxName_Validating);
+            this.textBoxName.Validated += new System.EventHandler(this.textBoxName_Validated);
             // 
             // label4
             // 
@@ -154,6 +163,10 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // RecordingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,9 +189,9 @@
             this.Load += new System.EventHandler(this.RecordingForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
 
         }
 
@@ -197,5 +210,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
