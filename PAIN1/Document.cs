@@ -12,6 +12,7 @@ namespace PAIN1
 
         public event Action<Recording> AddRecordingEvent;
         public event Action<Recording> DeleteRecordingEvent;
+        public event Action<Recording> EditRecordingEvent;
 
         public void AddRecording(Recording recording)
         {
@@ -25,6 +26,11 @@ namespace PAIN1
             recordings.Remove(delRecording);
 
             DeleteRecordingEvent?.Invoke(delRecording);
+        }
+
+        public void EditRecording(Recording edRecording)
+        {
+            EditRecordingEvent?.Invoke(edRecording);
         }
     }
 

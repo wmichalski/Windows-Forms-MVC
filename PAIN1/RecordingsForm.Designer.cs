@@ -43,8 +43,11 @@
             this.dropdownAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.dropdownDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -109,9 +112,9 @@
             this.recordingsListView.ContextMenuStrip = this.contextMenuStrip1;
             this.recordingsListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.recordingsListView.HideSelection = false;
-            this.recordingsListView.Location = new System.Drawing.Point(0, 25);
+            this.recordingsListView.Location = new System.Drawing.Point(0, 0);
             this.recordingsListView.Name = "recordingsListView";
-            this.recordingsListView.Size = new System.Drawing.Size(800, 425);
+            this.recordingsListView.Size = new System.Drawing.Size(800, 450);
             this.recordingsListView.TabIndex = 5;
             this.recordingsListView.UseCompatibleStateImageBehavior = false;
             this.recordingsListView.View = System.Windows.Forms.View.Details;
@@ -166,11 +169,29 @@
             this.dropdownDelete.Text = "Delete";
             this.dropdownDelete.Click += new System.EventHandler(this.dropdownDelete_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusCount});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
+            // 
+            // toolStripStatusCount
+            // 
+            this.toolStripStatusCount.Name = "toolStripStatusCount";
+            this.toolStripStatusCount.Size = new System.Drawing.Size(117, 17);
+            this.toolStripStatusCount.Text = "toolStripStatusCount";
+            // 
             // RecordingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.recordingsListView);
             this.Controls.Add(this.toolStrip1);
             this.Name = "RecordingsForm";
@@ -182,6 +203,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +226,8 @@
         private System.Windows.Forms.ToolStripMenuItem dropdownAdd;
         private System.Windows.Forms.ToolStripMenuItem dropdownEdit;
         private System.Windows.Forms.ToolStripMenuItem dropdownDelete;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusCount;
     }
 }
 
