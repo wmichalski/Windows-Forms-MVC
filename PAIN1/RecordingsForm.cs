@@ -45,14 +45,7 @@ namespace PAIN1
 
         private void updateCounter()
         {
-            MainForm main = (MainForm)this.ParentForm;
-            if (main != null)
-                this.toolStripStatusCount.Text = this.recordingsListView.Items.Count.ToString();
-        }
-
-        private void RecordingsForm_GotFocus(object sender, EventArgs e)
-        {
-            this.updateCounter();
+            this.toolStripStatusCount.Text = this.recordingsListView.Items.Count.ToString();
         }
 
         private void Document_AddRecordingEvent(Recording recording)
@@ -222,6 +215,7 @@ namespace PAIN1
         private void RecordingsForm_Activated(object sender, EventArgs e)
         {
             ToolStripManager.Merge(toolStrip1, ((MainForm)MdiParent).toolStrip1);
+            updateCounter();
             ToolStripManager.Merge(statusStrip1, ((MainForm)MdiParent).statusStrip1);
         }
 
